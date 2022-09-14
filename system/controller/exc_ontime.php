@@ -18,14 +18,14 @@ $now = $objDateTime->format('H:i:s');
 $lightstatus = $row["status"];
 // var_dump($now);
 
-if(!empty($_GET)){
-    $now = $_GET["data"];
     if($now == $ontime) {
         echo "on";
         $sql = "UPDATE light_status SET status=1 WHERE id=1";
         $stmt = $pdo->prepare($sql);
         $stmt->execute();
 
+    }else {
+        echo "hello";
     }
 
 
@@ -34,6 +34,6 @@ if(!empty($_GET)){
         $sql = "UPDATE light_status SET status=0 WHERE id=1";
         $stmt = $pdo->prepare($sql);
         $stmt->execute();
-
+    }else {
+        echo "hello";
     }
-}
