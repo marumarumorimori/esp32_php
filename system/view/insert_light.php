@@ -1,25 +1,3 @@
-<?php
-// require_once "../controller/exc_ontime.php";
-// require_once "../controller/get_request.php";
-ini_set('display_errors', "On");
-require_once "../dbconnect.php";
-$pdo = get_pdo();
-
-$query = "SELECT * FROM light_status";
-$stmt = $pdo->prepare($query);
-$stmt->execute();
-$row = $stmt->fetch();
-$ontime =$row["ontime"];
-$offtime =$row["offtime"];
-$lightstatus =$row["status"];
-// var_dump($lightstatus);
-if($lightstatus == "1") {
-    $lightstatus = "ついています";
-}else {
-    $lightstatus = "消えています";
-}
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -27,24 +5,45 @@ if($lightstatus == "1") {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="../../htdocs/css/styles.css">
+    <link rel ="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/insert_light.css">
 </head>
 <body>
-    <p>予約したon時間:<?php echo $ontime ?></p>
-    <p>予約したoff時間:<?php echo $offtime ?></p>
-    <p>今の状態；<?php echo $lightstatus?></p>
-    <form action="../controller/store_light.php" method="POST">
 
-    <h1>予約時間の登録</h1>
-    <div>
-            <p>消したい時間</p>
-            <input type="time" name="ontime" require>
+<div class="header">
+    <p class="header_title">OOの電気</p>
+</div>
+
+<div class="reservetime_container">
+
+<h1 class="reservedtime_title">予約時間の登録</h1>
+
+<form action="../controller/store_light.php" method="POST" class="reservedtime_form">
+        <div class="input_timevalue">
+            <p>時間</p>
+            <input type="time" name="time" required>
         </div>
-        <div>
-            <p>つけたい時間</p>
-            <input type="time" name="offtime" require>
+
+        <div class="onoff">
+            <select name="action" class="input_timevalue" required>
+            <option value="">ONかOFFを選んでください</option>
+                <option value="1">ON</option>
+                <option value="0">OFF</option>
+            </select>
         </div>
-        <input type="submit" value="送信">
+        <input type="submit" value="送信する" class="reservedtime_form_submit">
     </form>
+<div class="footer">
+<ul class="footernav">
+    <li><a href="onoff.php" class="icon"><i class="fas fa-lightbulb"></i></a></li>
+    <li><a href="insert_light.php" class="icon"><i class="fas fa-plus"></i></a></li>
+    <li><a href="reservetime.php" class="icon"><i class="fas fa-stream"></i></a></li>
+</ul>
+</div>
+</div>
+
 </body>
 </html>

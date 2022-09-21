@@ -1,0 +1,42 @@
+.lightContainer{
+    text-align: center;
+    padding: 10px 0;
+
+}
+
+.lightState {
+    font-size: 1.5rem;
+    color: #696969;
+    font-weight: bold;
+    color: #ffd700;
+    padding: 10px 0;
+}
+
+
+
+.buttons input {
+
+    color: #fff;
+    border-radius: 10px;
+    display: inline-block;
+    font-weight: bold;
+    width: 100px;
+    padding: 10px 0;
+
+}
+.buttons {
+    /* background-color: #bdbdbd; */
+    position: absolute;
+    bottom: 100px;
+    left: 0;
+    right: 0;
+}
+.onBTN {
+    background-color:#87cefa;
+    margin-right:5px ;
+}
+.offBTN {
+    margin-left:5px ;
+    background-color: #ffa500;
+}
+
